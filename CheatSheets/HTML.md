@@ -815,5 +815,3 @@ In HTML, localization refers to adapting a website’s content and behavior to d
 
 - Techniques to improve the visibility of web pages in search engines.
 - Good HTML structure and semantic tags help with SEO.
-
----
