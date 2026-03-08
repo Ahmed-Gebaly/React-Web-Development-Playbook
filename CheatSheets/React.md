@@ -1,9 +1,8 @@
-# React Overview
+# React Cheat Sheet
 
 > **React** is an open-source JavaScript library for building user interfaces, mainly used for single-page applications (SPAs) and mobile apps. It is best suited for small to medium-sized web applications.
 
 ## Key Features
-
 - **Developed by:** Facebook/Meta, widely used for web apps.
 - **Components:** Reusable, nestable building blocks. Defined as classes (old/OOP) or functions (modern/functional) that return JSX.
 - **JSX:** HTML-like syntax in JavaScript to describe UI structure in components.
@@ -14,88 +13,58 @@
 - **Hooks:** `useState`, `useEffect`, `useContext`, etc., enable state and features in functional components.
 - **Ecosystem:** Integrates with Redux (state management), React Router (routing), and other libraries.
 
+## Quick Installation Steps
+1. **Install Node.js** from [nodejs.org](https://nodejs.org/)
+2. **Create React app with Vite:**
+  ```bash
+  npm create vite@latest my-react-app -- --template react
+  cd my-react-app
+  npm install
+  npm run dev
+  ```
+3. Open the local URL (usually http://localhost:5173) in your browser.
 
-## Installation & Running a React App
-
-You can quickly set up a new React project using Vite (recommended for modern React development):
-
-### 1. Install Node.js
-Download and install Node.js from [nodejs.org](https://nodejs.org/).
-
-### 2. Create a New React App with Vite
-Open your terminal and run:
-
-```bash
-npm create vite@latest my-react-app -- --template react
-```
-
-This will scaffold a new React project in a folder named `my-react-app`.
-
-### 3. Install Dependencies
-Navigate to your project folder and install dependencies:
-
-```bash
-cd my-react-app
-npm install
-```
-
-### 4. Run the Development Server
-Start the local development server:
-
-```bash
-npm run dev
-```
-
-Your React app will be running locally. Open the provided URL (usually http://localhost:5173) in your browser to view it.
-
-main component file: src/App.jsx
-```jsx
-import React from 'react';
-function App() {
-  return (
-    <div>
-      <h1>Hello, React!</h1>
-    </div>
-  );
-}
-
-export default App;
-```
 
 ## Vite: Modern React Build Tool
 
-**Vite** is a next-generation frontend build tool that provides a fast and efficient development experience for modern web projects, including React, Vue, and more.
+- Super-fast dev server and builds
+- Instant hot reload (HMR)
+- Simple config, works out-of-the-box
+- Supports React, Vue, Svelte, and more
+- Replaces Create React App (CRA) for new projects
 
-- **Instant Startup:** Uses native ES modules for lightning-fast server start.
-- **Hot Module Replacement (HMR):** Updates your app instantly as you save changes.
-- **Optimized Build:** Uses Rollup under the hood for fast, production-ready builds.
-- **Framework Support:** Works seamlessly with React, Vue, Svelte, and others.
-
-**Why use Vite for React?**
-- Much faster than older tools like Create React App (CRA).
-- Simple configuration and modern defaults.
-- Actively maintained and widely adopted in the React community.
 
 ## React Compilers: Babel & SWC
 
-React code often uses modern JavaScript (ES6+) and JSX, which browsers do not understand natively. Compilers transform this code into browser-compatible JavaScript.
+React uses compilers to turn JSX and modern JavaScript (ES6+) into browser-compatible code.
 
-### Babel
-- The most common React compiler.
-- Transforms JSX into `React.createElement` calls.
-- Converts modern JavaScript (ES6+) into ES5 for broad browser support.
-- Highly configurable and supports many plugins.
 
-### SWC
-- A super-fast JavaScript/TypeScript compiler written in Rust.
-- Can be used as an alternative to Babel for compiling React code.
-- Offers improved performance and much faster build times.
-- Supported by Vite and other modern build tools.
+<table border="1" cellpadding="6" cellspacing="0">
+  <tr>
+    <th>Compiler</th>
+    <th>Language</th>
+    <th>Speed</th>
+    <th>Features</th>
+    <th>Usage</th>
+  </tr>
+  <tr>
+    <td><b>Babel</b></td>
+    <td>JS</td>
+    <td>Medium</td>
+    <td>Most common, highly configurable, big plugin ecosystem, transforms JSX/ES6+ to ES5</td>
+    <td>Default for many tools</td>
+  </tr>
+  <tr>
+    <td><b>SWC</b></td>
+    <td>JS/TS</td>
+    <td>Blazing</td>
+    <td>Super-fast (Rust), drop-in for Babel, used by Vite/Next.js, compiles JS/TS</td>
+    <td>Modern React setups</td>
+  </tr>
+</table>
 
-**Best Practice:**
-> Use Vite with its default compiler (ESBuild or SWC) for most React projects. Only customize if you have advanced needs.
-
----
+## React Component
+Components are the building blocks of a React application. 
 
 ### Simple Example: Call a component from another file (About)
 
@@ -155,3 +124,10 @@ export default App;
 - Use JSX to describe the UI structure.
 - Import and use components as JSX tags inside the return statement.
 
+
+## React Props
+Props are read-only data passed from a parent component to a child component. They enable you to:
+- Customize and configure child components
+- Make components reusable and dynamic
+- Control component behavior
+- Enable one-way data flow (parent → child)
