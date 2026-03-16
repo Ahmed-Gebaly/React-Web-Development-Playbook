@@ -200,36 +200,204 @@ export default App;
 ```
 In this example, the `Container` component uses the `children` prop to render whatever content is passed between its opening and closing tags. The `App` component wraps some JSX inside the `Container`, demonstrating how the `children` prop allows for flexible composition of components.
 
+### Destructuring Props
+Destructuring props in the function parameters makes code cleaner and more readable by directly accessing the needed properties.
+
+```jsx
+// Without Destructuring
+function Contact(props) {
+  return <h2>{props.username} - {props.email}</h2>;
+}
+
+// With Destructuring (Recommended)
+function Contact({ username, email }) {
+  return <h2>{username} - {email}</h2>;
+}
+
+// Usage
+<Contact username="Sara" email="sara@example.com" />
+```
+
+---
+
+### Props with Multiple Values
+Pass multiple props to customize component behavior and data display.
+
+```jsx
+function NewContact(props) {
+  return (
+    <div>
+      <h3>{props.name}</h3>
+    </div>
+  );
+}
+
+// Usage - Pass single or multiple props
+<NewContact name="Ahmed" />
+```
+
+---
+
+### Props with Expressions and Calculations
+You can perform calculations or transformations directly within JSX using curly braces. Combine props with operators to compute values.
+
+```jsx
+function Cart({ title, price, stock }) {
+  return (
+    <div>
+      <h3>{title}</h3>
+      {/* Calculation: Add shipping cost to base price */}
+      <p>Price (with $50 shipping): ${price + 50}</p>
+      {/* Ternary operator for conditional values */}
+      <p>Status: {stock ? "In Stock" : "Out of Stock"}</p>
+    </div>
+  );
+}
+
+// Usage
+<Cart title="Laptop" price={1000} stock={true} />
+// Output: Price (with $50 shipping): $1050
+// Output: Status: In Stock
+```
+
+---
+
+### Array Props and List Rendering
+Pass arrays as props and render list items using `.map()`. Always provide a unique `key` prop for each rendered item.
+
+```jsx
+function UsersList({ users }) {
+  return (
+    <ul>
+      {users.map((user, index) => (
+        <li key={index}>
+          {index} - {user.name} - {user.email}
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+// Usage
+const users = [
+  { name: "Sara", email: "sara@example.com" },
+  { name: "Ahmed", email: "ahmed@example.com" },
+  { name: "Fatima", email: "fatima@example.com" }
+];
+
+<UsersList users={users} />
+```
+
+**Best Practice:** Use unique IDs as keys instead of array indices if the list can be reordered or items can be added/removed.
+
+---
+
+### Default Prop Values
+Set default values for props so they have fallback values when not provided by the parent component.
+
+```jsx
+function Customer({ username = "Guest User" }) {
+  return <h2>Hello {username}!</h2>;
+}
+
+// Usage 1: Without providing prop - uses default
+<Customer />
+// Output: Hello Guest User!
+
+// Usage 2: With providing prop
+<Customer username="Abdelmawgod" />
+// Output: Hello Abdelmawgod!
+```
+
+---
+
+### Children Prop
+The `children` prop is a special built-in prop that allows you to pass JSX elements, components, or plain text between component tags. It enables flexible composition and wrapper components.
+
+```jsx
+// Wrapper component that can contain any content
+function Wrapper({ children }) {
+  return (
+    <div style={{ border: "1px solid black", padding: "10px" }}>
+      <h2>Wrapper Component</h2>
+      <div>{children}</div>
+      <p>This content is always visible inside the Wrapper.</p>
+    </div>
+  );
+}
+
+export default Wrapper;
+```
+
+```jsx
+// Usage in parent component
+<Wrapper>
+  <h3>This is dynamic content</h3>
+  <p>This can be anything passed between the tags</p>
+</Wrapper>
+```
+
+---
+
+### Render Props Pattern (Children as Function)
+Pass a function as the `children` prop to allow components to receive data and control rendering. Advanced pattern for data sharing.
+
+```jsx
+function Data({ children }) {
+  const data = {
+    name: "Abdelmawgod",
+    age: 30,
+    city: "Cairo"
+  };
+  // children is a function that receives data
+  return children(data);
+}
+
+export default Data;
+```
+
+```jsx
+// Usage - children is a render function
+<Data>
+  {(data) => (
+    <div>
+      <p>Name: {data.name}</p>
+      <p>Age: {data.age}</p>
+      <p>City: {data.city}</p>
+    </div>
+  )}
+</Data>
+```
+
+---
+
 ### Prop Drilling
-Prop drilling occurs when you have to pass props through multiple levels of components that don't need them, just to get them to a deeply nested component. This can make your code harder to maintain and understand.
+Prop drilling occurs when you have to pass props through multiple levels of components that don't need them, just to get them to a deeply nested component. This can make code harder to maintain and understand.
 
-- Context API or state management libraries (like Redux or Zustand) can help avoid prop drilling by providing a way to share data across the component tree without passing props down manually at every level.
-- Component composition and the `children` prop can also help reduce prop drilling by allowing you to wrap components and pass data directly to the children without needing to pass it through intermediate components.
-
+**Solutions:**
+- Use Context API or state management libraries (Redux, Zustand) to share data across the component tree without passing props manually
+- Component composition and the `children` prop can reduce prop drilling by passing data directly to children
 
 #### Fix prop drilling with children
 
-**Before: Prop drilling**
+**Before: Prop drilling (less ideal)**
 ```jsx
-// Before: Prop drilling
 function App() {
   const user = { name: 'Sara', age: 30 };
   return <Parent user={user} />;
 }
-```
-```jsx
+
 function Parent({ user }) {
   return <Child user={user} />;
 }
-```
-```jsx
+
 function Child({ user }) {
   return <div>{user.name}</div>;
 }
 ```
-**After: Using children to avoid prop drilling**
+
+**After: Using children to avoid prop drilling (better)**
 ```jsx
-// After: Using children to avoid prop drilling
 function App() {
   const user = { name: 'Sara', age: 30 };
   return (
@@ -238,13 +406,11 @@ function App() {
     </Parent>
   );
 }
-```
-```jsx
+
 function Parent({ children }) {
   return <div>{children}</div>;
 }
-```
-```jsx
+
 function Child({ user }) {
   return <div>{user.name}</div>;
 }
