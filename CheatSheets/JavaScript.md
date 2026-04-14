@@ -90,7 +90,119 @@ console.log(result);
 - **Event Handling**: Responding to user actions (clicks, input, etc.)
 - **Error Handling**: `try`, `catch`, `finally`
 - **ES6+ Features**: Template literals, destructuring, default parameters, etc.
-  
+
+## ⚙️ JavaScript Function Types
+
+JavaScript functions are a core part of the language and can be created in different forms. Use this section to understand the main function categories and their role.
+
+<table border="1" cellpadding="4" cellspacing="0">
+  <tr>
+    <th>Function Type</th>
+    <th>Definition</th>
+    <th>Key Behavior</th>
+    <th>Typical Use</th>
+  </tr>
+  <tr>
+    <td><strong>Function Declaration</strong></td>
+    <td>A named function defined with the `function` keyword.</td>
+    <td>Hoisted; available before declaration.</td>
+    <td>Reusable named logic and core application behavior.</td>
+  </tr>
+  <tr>
+    <td><strong>Function Expression</strong></td>
+    <td>A function assigned to a variable or constant.</td>
+    <td>Created at runtime; not hoisted like declarations.</td>
+    <td>Flexible function assignment and conditional definition.</td>
+  </tr>
+  <tr>
+    <td><strong>Arrow Function</strong></td>
+    <td>Shorter syntax using `=>` for function creation.</td>
+    <td>Uses lexical `this`; no `arguments` object.</td>
+    <td>Compact callbacks and functions inside expressions.</td>
+  </tr>
+  <tr>
+    <td><strong>Generator Function</strong></td>
+    <td>Function that can pause and resume execution with `yield`.</td>
+    <td>Returns an iterator and supports sequence control.</td>
+    <td>Iterating values lazily and custom iteration flows.</td>
+  </tr>
+  <tr>
+    <td><strong>Async Function</strong></td>
+    <td>Function defined with `async` that returns a Promise.</td>
+    <td>Allows `await` and asynchronous code in a synchronous style.</td>
+    <td>Handling asynchronous operations and API calls cleanly.</td>
+  </tr>
+  <tr>
+    <td><strong>Method</strong></td>
+    <td>Function defined as a property of an object.</td>
+    <td>Called on an object; `this` refers to the owning object.</td>
+    <td>Encapsulating behavior within objects and classes.</td>
+  </tr>
+  <tr>
+    <td><strong>Constructor Function</strong></td>
+    <td>Function used with `new` to create object instances.</td>
+    <td>Initializes object state and returns a new instance.</td>
+    <td>Creating reusable object templates and custom types.</td>
+  </tr>
+</table>
+
+## 🧠 JavaScript Function Features
+
+Functions in JavaScript offer powerful features that support modular, maintainable code.
+
+<table border="1" cellpadding="4" cellspacing="0">
+  <tr>
+    <th>Feature</th>
+    <th>What It Means</th>
+    <th>Why It Matters</th>
+  </tr>
+  <tr>
+    <td><strong>First-class functions</strong></td>
+    <td>Functions are treated like values and can be stored, passed, and returned.</td>
+    <td>Enables higher-order programming and flexible abstractions.</td>
+  </tr>
+  <tr>
+    <td><strong>Higher-order functions</strong></td>
+    <td>Functions that accept functions as arguments or return functions.</td>
+    <td>Useful for callbacks, array processing, and function composition.</td>
+  </tr>
+  <tr>
+    <td><strong>Closures</strong></td>
+    <td>Functions retain access to variables from their defining scope.</td>
+    <td>Supports private state and encapsulation inside functions.</td>
+  </tr>
+  <tr>
+    <td><strong>Default parameters</strong></td>
+    <td>Function parameters can have default values if not provided.</td>
+    <td>Makes function calls simpler and safer by avoiding `undefined`.</td>
+  </tr>
+  <tr>
+    <td><strong>Rest parameters</strong></td>
+    <td>Collects remaining arguments into an array.</td>
+    <td>Supports variable argument lengths cleanly.</td>
+  </tr>
+  <tr>
+    <td><strong>Spread syntax</strong></td>
+    <td>Expands iterable values into individual arguments or elements.</td>
+    <td>Helps merge arrays, pass arguments, and clone data easily.</td>
+  </tr>
+  <tr>
+    <td><strong>`this` binding</strong></td>
+    <td>Determines what object `this` refers to inside a function.</td>
+    <td>Important for methods, constructors, and arrow function behavior.</td>
+  </tr>
+  <tr>
+    <td><strong>Async/await</strong></td>
+    <td>Simplifies asynchronous code by waiting for Promises.</td>
+    <td>Produces clearer async flow than nested callbacks or `.then()` chains.</td>
+  </tr>
+  <tr>
+    <td><strong>Function properties</strong></td>
+    <td>Functions have metadata like `name`, `length`, and `prototype`.</td>
+    <td>Useful for introspection, debugging, and class-style behavior.</td>
+  </tr>
+</table>
+
 ## 📝 Variables and Data Types
 
 ### 🏷️ What are Variables?
